@@ -1,0 +1,19 @@
+{
+  "name": "waitor",
+  "version": "1.0.0",
+  "description": "Tiny script that waits for items declared as variables or selectors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbi99/waitor.git"
+  },
+  "author": "Hakan Bilgin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hbi99/waitor/issues"
+  },
+  "homepage": "https://github.com/hbi99/waitor#readme"
+}
