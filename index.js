@@ -3,7 +3,7 @@
     var stack = [];
 
     var waitor = {
-      interval: 300,
+      interval: 700,
       timeout: false,
       on: function(what, fn) {
         stack.push({
@@ -14,8 +14,10 @@
         this.flush();
       },
       flush: function() {
-        var item,
+        var self = waitor,
+          item,
           search,
+          callback,
           i = 0,
           il = stack.length,
           parts, j, jl;
@@ -39,12 +41,13 @@
               if (!search) continue;
               break;
           }
-          stack[i].callback(item);
-          stack.splice(i, 1);
+          callback = stack[i].callback;
+          stack.splice(i-1, 1);
+          callback(item);
         }
-        clearTimeout(this.timeout);
-        if (stack.length) {
-          this.timeout = setTimeout(this.flush.bind(this), this.interval);
+        clearTimeout(self.timeout);
+        if (stack.length && stack.length < 10) {
+          self.timeout = setTimeout(self.flush, self.interval);
         }
       }
     };
